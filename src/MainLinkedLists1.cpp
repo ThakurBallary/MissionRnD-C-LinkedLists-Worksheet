@@ -28,15 +28,19 @@ Objectives of C-LinkedLists-1 Lesson:
 
 int main(){
 
+	//Test numberToLinkedList
+	/*
+	int num = 1234;
+	struct node *head = numberToLinkedList(num);
+	*/
+	
 	//Test 012SortSll
 
-	//Test numberToLinkedList
+	//Test twodigitLinkedList
 
 	//Test removeEveryKthNode
 
 	//Test sortLinkedList
-
-	//Test twodigitLinkedList
-
+	
 	return 0;
 }

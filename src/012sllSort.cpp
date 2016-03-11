@@ -21,6 +21,54 @@ struct node {
 	struct node *next;
 };
 
+struct node * createNode(int data) {
+	struct node *newnode = (struct node*) malloc(sizeof(struct node));
+	newnode->data = data;
+	newnode->next = NULL;
+	return newnode;
+}
+
+void insertNode(struct node **head, int data) {
+	struct node *newnode = createNode(data);
+	struct node *temp = *head;
+	while (temp->next != NULL) {
+		temp = temp->next;
+	}
+	temp->next = newnode;
+}
+
 void sll_012_sort(struct node *head){
-	
+	struct node *zero = NULL;
+	struct node *one = NULL;
+	struct node *two = NULL;
+	struct node *node = head;
+	while (node != NULL) {
+		if (node->data == 0) {
+			insertNode(&zero, 0);
+		}
+		else if (node->data == 1) {
+			insertNode(&one, 1);
+		}
+		else {
+			insertNode(&two, 2);
+		}
+		node = node->next;
+	}
+	head = zero;
+	// 0's
+	struct node *temp = zero;
+	while (temp->next != NULL) {
+		temp = temp->next;
+	}
+	// 1's
+	if (one != NULL) {
+		temp->next = one;
+	}
+	while (temp->next != NULL) {
+		temp = temp->next;
+	}
+	// 2's
+	if (two != NULL) {
+		temp->next = two;
+	}
 }
