@@ -21,54 +21,38 @@ struct node {
 	struct node *next;
 };
 
-struct node * createNode(int data) {
-	struct node *newnode = (struct node*) malloc(sizeof(struct node));
-	newnode->data = data;
-	newnode->next = NULL;
-	return newnode;
-}
-
-void insertNode(struct node **head, int data) {
-	struct node *newnode = createNode(data);
-	struct node *temp = *head;
-	while (temp->next != NULL) {
-		temp = temp->next;
-	}
-	temp->next = newnode;
-}
-
 void sll_012_sort(struct node *head){
-	struct node *zero = NULL;
-	struct node *one = NULL;
-	struct node *two = NULL;
+	int zeros = 0, ones = 0, twos = 0;
 	struct node *node = head;
 	while (node != NULL) {
 		if (node->data == 0) {
-			insertNode(&zero, 0);
+			zeros++;
 		}
 		else if (node->data == 1) {
-			insertNode(&one, 1);
+			ones++;
 		}
 		else {
-			insertNode(&two, 2);
+			twos++;
 		}
 		node = node->next;
 	}
-	head = zero;
+	node = head;
 	// 0's
-	struct node *temp = zero;
-	while (temp->next != NULL) {
-		temp = temp->next;
+	while (zeros) {
+		node->data = 0;
+		node = node->next;
+		zeros--;
 	}
 	// 1's
-	if (one != NULL) {
-		temp->next = one;
-	}
-	while (temp->next != NULL) {
-		temp = temp->next;
+	while (ones) {
+		node->data = 1;
+		node = node->next;
+		ones--;
 	}
 	// 2's
-	if (two != NULL) {
-		temp->next = two;
+	while (twos) {
+		node->data = 2;
+		node  = node->next;
+		twos--;
 	}
 }

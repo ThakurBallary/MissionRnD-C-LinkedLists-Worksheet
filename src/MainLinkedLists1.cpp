@@ -25,9 +25,55 @@ Objectives of C-LinkedLists-1 Lesson:
 //Do not edit below Header Files
 #include <stdio.h>
 #include "FunctionHeadersLinkedLists1.h"
+#include <malloc.h>
+
+struct node {
+	int data;
+	struct node *next;
+};
+
+struct node * tcreateNode(int data) {
+	struct node *newnode = (struct node*) malloc(sizeof(struct node));
+	newnode->data = data;
+	newnode->next = NULL;
+	return newnode;
+}
+
+void tinsertNode(struct node **head, int data) {
+	struct node *newnode = tcreateNode(data);
+	struct node *temp = *head;
+	if (*head == NULL) {
+		*head = newnode;
+	}
+	else {
+		while (temp->next != NULL) {
+			temp = temp->next;
+		}
+		temp->next = newnode;
+	}
+}
+
+void display(struct node **head){
+	struct node *temp = *head;
+	while (temp != NULL){
+		printf("%d ", temp->data);
+		temp = temp->next;
+	}
+}
 
 int main(){
-
+	struct node *head = NULL;
+	int num_array[8] = { 1,2,3,4,5,6,7,8 };
+	int i, len = 8;
+	for (i = 0; i<len; i++) {
+		tinsertNode(&head, num_array[i]);
+	}
+	display(&head);
+	head = removeEveryKthNode(head, 9);
+	printf("\n");
+	display(&head);
+	
+		
 	//Test numberToLinkedList
 	/*
 	int num = 1234;
@@ -35,8 +81,10 @@ int main(){
 	*/
 	
 	//Test 012SortSll
+	// sll_012_sort(head);
 
 	//Test twodigitLinkedList
+	/* printf("\n%d", convert_sll_2digit_to_int(head)); */
 
 	//Test removeEveryKthNode
 
