@@ -20,11 +20,20 @@ struct node {
 
 struct node * sortLinkedList(struct node *head) {
 	struct node *temp = head;
-	if (temp == NULL || temp->next == NULL) {
+	if (temp == NULL) {
 		return NULL;
 	}
-	
-
-
+	while (temp->next != NULL) {
+		struct node *fp = temp->next;
+		while (fp != NULL) {
+			if (temp->num > fp->num) {
+				int t = temp->num;
+				temp->num = fp->num;
+				fp->num = t;
+			}
+			fp = fp->next;
+		}
+		temp = temp->next;
+	}
 	return head;
 }

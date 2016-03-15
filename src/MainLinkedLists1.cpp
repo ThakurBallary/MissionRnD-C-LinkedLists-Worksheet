@@ -63,13 +63,13 @@ void display(struct node **head){
 
 int main(){
 	struct node *head = NULL;
-	int num_array[8] = { 1,2,3,4,5,6,7,8 };
-	int i, len = 8;
+	int num_array[5] = { 5, 3, 1, 2, 4 };
+	int i, len = 5;
 	for (i = 0; i<len; i++) {
 		tinsertNode(&head, num_array[i]);
 	}
 	display(&head);
-	head = removeEveryKthNode(head, 9);
+	head = sortLinkedList(head);
 	printf("\n");
 	display(&head);
 	
@@ -84,11 +84,14 @@ int main(){
 	// sll_012_sort(head);
 
 	//Test twodigitLinkedList
-	/* printf("\n%d", convert_sll_2digit_to_int(head)); */
+	// printf("\n%d", convert_sll_2digit_to_int(head)); 
 
 	//Test removeEveryKthNode
+	// head = removeEveryKthNode(head, 9);
 
 	//Test sortLinkedList
+	// head = sortLinkedList(head);
+	
 	
 	return 0;
 }
